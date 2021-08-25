@@ -23,4 +23,7 @@ if [ ! -e /root/kselftest.tar.gz ];then
 fi
 tar xzf kselftest.tar.gz || exit $?
 cd kselftest
+# remove ftrace tests
+sed -i 's,.*ftracetest.*,echo "selftests: ftracetest [SKIP]",' run_kselftest.sh
+
 ./run_kselftest.sh
