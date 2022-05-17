@@ -32,4 +32,11 @@ sed -i 's,.*run_vmtests.*,echo "selftests: run_vmtests [SKIP]",' run_kselftest.s
 sed -i 's,.*fw_filesystem.sh.*,echo "selftests: fw_filesystem.sh [SKIP]",' run_kselftest.sh
 sed -i 's,.*fw_userhelper.sh.*,echo "selftests: fw_userhelper.sh [SKIP]",' run_kselftest.sh
 
+# spetial arch cases
+case $(uname -m) in
+aarch64)
+	sed -i 's,.*mq_perf_tests.*,echo "selftests: mq_perf_tests [SKIP]",' run_kselftest.sh
+;;
+esac
+
 ./run_kselftest.sh
